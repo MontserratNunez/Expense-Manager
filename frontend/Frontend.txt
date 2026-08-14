@@ -1,0 +1,1 @@
+en la carpeta /frontend van a implementar el frontend
