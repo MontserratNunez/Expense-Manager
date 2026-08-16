@@ -2,11 +2,7 @@
    CONFIGURATION
 ========================================= */
 
-// Montserrat deberá colocar aquí la URL de la API
-// cuando termine la integración del backend.
-
-const API_URL = "http://localhost:3000/api/gastos";
-
+const API_URL = "http://localhost:5000/api/gastos";
 
 /* =========================================
    DOM ELEMENTS
@@ -1119,40 +1115,27 @@ function formatearFechaInput(
    FORMAT DATE
 ========================================= */
 
-function formatearFecha(
-    fechaOriginal
-) {
+function formatearFecha(fechaOriginal) {
 
     if (!fechaOriginal) {
-
         return "Sin fecha";
-
     }
 
-    const fechaObjeto =
-        new Date(fechaOriginal);
+    const fechaTexto = String(fechaOriginal);
 
-    if (
-        Number.isNaN(
-            fechaObjeto.getTime()
-        )
-    ) {
+    // Tomamos solamente YYYY-MM-DD para evitar
+    // conversiones por zona horaria.
+    const soloFecha = fechaTexto.split("T")[0];
 
-        return fechaOriginal;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(soloFecha)) {
 
+        const [anio, mes, dia] = soloFecha.split("-");
+
+        return `${dia}/${mes}/${anio}`;
     }
 
-    return fechaObjeto.toLocaleDateString(
-        "es-DO",
-        {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric"
-        }
-    );
-
+    return fechaTexto;
 }
-
 
 /* =========================================
    FORMAT CURRENCY

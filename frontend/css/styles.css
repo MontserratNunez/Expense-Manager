@@ -914,6 +914,10 @@ EMPTY STATE
     rgba(255,255,255,0.7);
 }
 
+.empty-state[hidden] {
+    display: none;
+}
+
 .empty-state h3{
 
     margin-bottom: 10px;
@@ -952,6 +956,10 @@ LOADING STATE
     rgba(255,255,255,0.5);
 
     font-size: 14px;
+}
+
+.loading-state[hidden] {
+    display: none;
 }
 
 
@@ -1401,4 +1409,11 @@ MOBILE PERFORMANCE
         translateY(-1px);
     }
 
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="month"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.8;
+    cursor: pointer;
 }
